@@ -4,7 +4,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import emptyFunction from 'react/lib/emptyFunction';
 import calculateNodeHeight from './calculateNodeHeight';
 
 export default class TextareaAutosize extends React.Component {
@@ -31,7 +30,7 @@ export default class TextareaAutosize extends React.Component {
   }
 
   static defaultProps = {
-    onChange: emptyFunction,
+    onChange: ()=>null,
     useCacheForDOMMeasurements: false
   }
 
