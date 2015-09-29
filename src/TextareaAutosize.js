@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import emptyFunction from 'react/lib/emptyFunction';
 import calculateNodeHeight from './calculateNodeHeight';
 
@@ -44,7 +45,7 @@ export default class TextareaAutosize extends React.Component {
   render() {
     let {valueLink, onChange, ...props} = this.props;
     if (typeof valueLink === 'object') {
-      props.value = this.props.valueLink.value;
+      props.value = valueLink.value;
     }
     props.style = {
       ...props.style,
@@ -76,7 +77,7 @@ export default class TextareaAutosize extends React.Component {
   _resizeComponent() {
     let {useCacheForDOMMeasurements} = this.props;
     let height = calculateNodeHeight(
-      React.findDOMNode(this),
+      ReactDOM.findDOMNode(this),
       useCacheForDOMMeasurements,
       this.props.rows);
     this.setState({height});
@@ -86,14 +87,14 @@ export default class TextareaAutosize extends React.Component {
    * Read the current value of <textarea /> from DOM.
    */
   get value(): string {
-    return React.findDOMNode(this).value;
+    return ReactDOM.findDOMNode(this).value;
   }
 
   /**
    * Put focus on a <textarea /> DOM element.
    */
   focus() {
-    React.findDOMNode(this).focus();
+    ReactDOM.findDOMNode(this).focus();
   }
 
 }
