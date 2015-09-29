@@ -99,7 +99,7 @@ export default class TextareaAutosize extends React.Component {
 }
 
 let onNextFrame;
-if (typeof GLOBAL != 'undefined') {
+if (typeof GLOBAL == 'undefined') {
   onNextFrame = window.requestAnimationFrame;
 
   if (onNextFrame === undefined) {
